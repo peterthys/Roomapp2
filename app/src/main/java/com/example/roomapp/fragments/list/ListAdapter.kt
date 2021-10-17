@@ -3,6 +3,7 @@ package com.example.roomapp.fragments.list
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.roomapp.R
 import com.example.roomapp.data.User
@@ -26,6 +27,11 @@ private var userList = emptyList<User>()
         holder.itemView.firstName_txt.text=currentItem.firstName
         holder.itemView.lastName_txt.text=currentItem.lastName
         holder.itemView.age_txt.text=currentItem.age.toString()
+       holder.itemView.rowLayout.setOnClickListener {
+            val action = ListFragmentDirections.actionListFragmentToUpdateFragment(currentItem )
+       holder.itemView.findNavController().navigate(action)
+
+       }
     }
     fun setData(user:List<User>){
         this.userList=user
